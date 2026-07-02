@@ -190,17 +190,15 @@ let accountIn;
 btnLogin.addEventListener("click", function (e) {
   e.preventDefault();
   console.log(e);
-
   accountIn = accounts.find((acc) => acc.initials === inputLoginUsername.value);
   console.log(accountIn);
 
-  accountIn?.pin === Number(inputLoginPin.value)
-    ? console.log(`Correct username and password`)
-    : console.log(`Check username and password`);
-
-  //Display Ui message
-  labelWelcome.innerHTML = `Welcome ${accountIn.owner.split(" ")[0]}`;
-  containerApp.style.opacity = 100;
+  if (accountIn && accountIn.pin === Number(inputLoginPin.value)) {
+    labelWelcome.innerHTML = `Welcome ${accountIn.owner.split(" ")[0]}`;
+    containerApp.style.opacity = 100;
+  } else {
+    console.log(`Wrong password`);
+  }
 
   updateUI(accountIn);
 
@@ -333,3 +331,11 @@ const total = convNum.reduce(function (acc, val) {
 
 
 */
+
+const testerForSort = [3, 7, 8, 9, 5];
+
+testerForSort.sort((a, b) => {
+  if (a < b) return 1;
+});
+
+console.log(testerForSort);
