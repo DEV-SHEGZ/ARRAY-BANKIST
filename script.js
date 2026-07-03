@@ -119,10 +119,14 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
-const displayTrans = function (accs) {
+const displayTrans = function (accs, sort = false) {
   containerMovements.innerHTML = "";
+  const movs = sort
+    ? accs.movements.slice().sort((a, b) => a - b)
+    : accs.movements;
+  console.log(movs);
 
-  accs.movements.forEach(function (trans, i) {
+  movs.forEach(function (trans, i) {
     const type = trans < 0 ? "withdrawal" : "deposit";
 
     const html = `   <div class="movements__row">
@@ -271,6 +275,15 @@ btnClose.addEventListener("click", function (e) {
   console.log(accounts);
 });
 
+let sorted = false;
+btnSort.addEventListener("click", function (e) {
+  e.preventDefault();
+  displayTrans(accountIn, !sorted);
+  sorted = !sorted;
+
+  console.log(" I work brody!");
+});
+
 /*const toUsd = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const rate = 1.1;
 
@@ -335,7 +348,8 @@ const total = convNum.reduce(function (acc, val) {
 const testerForSort = [3, 7, 8, 9, 5];
 
 testerForSort.sort((a, b) => {
-  if (a < b) return 1;
+  if (a > b) return -9;
+  if (a < b) return 9;
 });
 
 console.log(testerForSort);
