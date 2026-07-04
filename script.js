@@ -201,7 +201,7 @@ btnLogin.addEventListener("click", function (e) {
     labelWelcome.innerHTML = `Welcome ${accountIn.owner.split(" ")[0]}`;
     containerApp.style.opacity = 100;
   } else {
-    console.log(`Wrong password`);
+    console.log(`Check your login details`);
   }
 
   updateUI(accountIn);
