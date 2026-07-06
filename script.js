@@ -268,7 +268,7 @@ btnClose.addEventListener("click", function (e) {
       1,
     );
   } else {
-    console.log(`Wrong!`);
+    console.log(`Check your login details`);
   }
   containerApp.style.opacity = 0;
   inputClosePin.value = inputCloseUsername.value = "";
