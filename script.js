@@ -345,7 +345,7 @@ const total = convNum.reduce(function (acc, val) {
 
 */
 
-const testerForSort = [3, 7, 8, 9, 5];
+const testerForSort = [3, 7, 8, 9, 5, -8, -9, -7, -5, -4];
 
 testerForSort.sort((a, b) => {
   if (a > b) return -9;
@@ -353,3 +353,26 @@ testerForSort.sort((a, b) => {
 });
 
 console.log(testerForSort);
+
+const bankdepositSum = accounts
+  .map((acc) => acc.movements)
+  .flat()
+  .filter((num) => num > 0);
+
+console.log(bankdepositSum);
+
+const reduceTest = testerForSort.reduce(
+  (acc, cur) => (cur > 0 ? ++acc : acc),
+  0,
+);
+console.log(reduceTest);
+
+const sums = testerForSort.reduce(
+  (sums, current) => {
+    current > 0 ? (sums.deposit += current) : (sums.withdrawals += current);
+    return sums;
+  },
+  { deposit: 0, withdrawals: 0 },
+);
+
+console.log(sums);
